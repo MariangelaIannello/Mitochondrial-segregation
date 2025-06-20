@@ -1,6 +1,6 @@
 # Mitochondrial-segregation
 
-This repository collect scritps and file used in the work: "New insights into mitochondrial segregation mechanisms in animals from the Doubly Uniparental Inheritance of bivalves".
+This repository collect scritps and files generated for the the work: "New insights into mitochondrial segregation mechanisms in animals from the Doubly Uniparental Inheritance of bivalves".
 
 ### New insights into mitochondrial segregation mechanisms in animals from the Doubly Uniparental Inheritance of bivalves
 by M. Iannello1*, G. Piccinini1*, F. Salatiello2,3*, G. Forni1, F. Nicolini1,4, U. Valdrè1, M. Martini1, J. Martelossi5, F. Ghiselli1#, E. D’Aniello2#, L. Milani1#.
