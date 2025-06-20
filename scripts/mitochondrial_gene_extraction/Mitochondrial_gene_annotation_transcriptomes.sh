@@ -1,7 +1,7 @@
 #!/bin/bash 
 
-### $1 = Nome specie
-### $2 = Numero processori
+### $1 = Species name
+### $2 = Number of CPUs
 
 ### ...Previously: mitochondrial gene database building
 ## ncbi search string: "mitochondrial OR mitochondrion OR co1 OR co2 OR co3 OR cox OR cytochrome OR cytb OR nadh OR atp6 OR atp8 OR atp AND bivalvia NOT hypothetical NOT orf NOT HORF NOT h open reading frame NOT F-specific ORF NOT female-specific orf NOT MORF NOT F-ORF" => downloading file named ncbi_search_raw_results.fasta

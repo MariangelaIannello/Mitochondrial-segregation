@@ -1,8 +1,8 @@
 #!/bin/bash 
 
-### $1 = Nome specie
+### $1 = Species name
 ### $2 = Genome code
-### $3 = Numero processori
+### $3 = Number of CPUs
 
 
 ## Define functions:
