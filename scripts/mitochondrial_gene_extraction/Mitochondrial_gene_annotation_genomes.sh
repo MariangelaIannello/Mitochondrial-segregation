@@ -12,11 +12,11 @@ function 1linefasta() {	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0)
 
 cd "$1"
 
-#link=$(esearch -db assembly -query "$1" | efetch -format docsum | grep "assembly" | grep -v Meta | grep -oh 'ftp.*\w*'"$2"'.*[0-9]\/' | sort -u)
-#assembly=$(echo $link | awk -F '/' '{print $(NF-1)}')
-#wget "$link""$assembly"_genomic.fna.gz
-#zcat "$assembly"_genomic.fna.gz | seqkit seq -M 100000 | 1linefasta > "$1"_short100k_genomic.fna
-#rm "$assembly"_genomic.fna.gz 
+link=$(esearch -db assembly -query "$1" | efetch -format docsum | grep "assembly" | grep -v Meta | grep -oh 'ftp.*\w*'"$2"'.*[0-9]\/' | sort -u)
+assembly=$(echo $link | awk -F '/' '{print $(NF-1)}')
+wget "$link""$assembly"_genomic.fna.gz
+zcat "$assembly"_genomic.fna.gz | seqkit seq -M 100000 | 1linefasta > "$1"_short100k_genomic.fna
+rm "$assembly"_genomic.fna.gz 
 
 ###### Mitochondrial extraction pipeline
 
@@ -46,12 +46,6 @@ for i in $(awk '{print $1}' "$1"_allorfs_diamond_mito.txt | sort -u); do grep -w
 for i in $(awk '{print $1}' "$1"_allorfs_diamond_mito.txt | sort -u); do grep -w -A1 "$i" "$1"_mitohit.fasta.transdecoder.cds; done > "$1"_allorfs_diamond_mito_nc.fasta
 
 ### Collapsing fragments (nucleotide sequences)
-#~/CAP3/cap3 "$1"_allorfs_diamond_mito_nc.fasta
-#1linefasta "$1"_allorfs_diamond_mito_nc.fasta.cap.contigs > bla; mv bla "$1"_allorfs_diamond_mito_nc.fasta.cap.contigs
-#1linefasta "$1"_allorfs_diamond_mito_nc.fasta.cap.singlets > bla; mv bla "$1"_allorfs_diamond_mito_nc.fasta.cap.singlets
-#cat "$1"_allorfs_diamond_mito_nc.fasta.cap.contigs "$1"_allorfs_diamond_mito_nc.fasta.cap.singlets > "$1"_allorfs_diamond_mito_nc_collapsed.fasta
-#mkdir cap3
-#mv "$1"_allorfs_diamond_mito_nc.fasta.cap.* cap3/
 /usr/local/cdhit-master/cd-hit-est -i "$1"_allorfs_diamond_mito_nc.fasta -o "$1"_allorfs_diamond_mito_nc_collapsed.fasta -t 1 -g 1 -G 0 -aL 0.01 -aS 0.01
 sed -i 's/ '"$1"'.*//g' "$1"_allorfs_diamond_mito_nc_collapsed.fasta
 
